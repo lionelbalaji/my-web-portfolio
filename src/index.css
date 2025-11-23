@@ -70,3 +70,7 @@
     background-position: 0% 50%;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}

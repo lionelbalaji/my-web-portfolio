@@ -1,36 +1,29 @@
 import React from "react";
-import Stars from "../animation/Stars";
-import Button from "../Button";
 import Navbar from "../components/Navbar";
+import Objective from "../components/Objective";
+import Cards from "../utils/Cards";
+import ProjectCards from "../components/ProjectCards";
 import SkillCard from "../utils/SkillCard";
-import LightningEffect from "../animation/LightningEffect";
-import Projects from "../components/Projects";
+import CardsSkill from "../components/CardsSkill";
+import Contact from "./Contact";
 
 const Dashboard = () => {
   return (
-    <div className="relative bg-main-bg text-main-text min-h-screen flex flex-col  overflow-hidden">
-      {/* Stars in the background */}
-      <div className="absolute inset-0 z-0">
-        <Stars />
-        {/* <LightningEffect /> */}
+    <div className="bg-bg-main">
+      <Navbar />
+      <Objective />
+      <div className="w-full flex justify-center my-10">
+        <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
-
-      {/* Foreground content */}
-      <div className="">
-        <Navbar />
+      <ProjectCards />
+      <div className="w-full flex justify-center my-10">
+        <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
-      <div className="relative z-10 flex flex-col items-center">
-        <h1 className="heading-primary ">Welcome to My Portfolio</h1>
-        <p className="text-main-muted mt-2">
-          Full Stack Developer | React | Node | Firebase | MySQL
-        </p>
+      <CardsSkill />
+      <div className="w-full flex justify-center my-10">
+        <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
-      <div className="flex justify-center">
-        <SkillCard />
-      </div>
-      <div className="flex justify-center">
-        <Projects />
-      </div>
+      <Contact />
     </div>
   );
 };

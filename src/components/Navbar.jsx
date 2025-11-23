@@ -11,64 +11,35 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import NavButton from "../Button";
-const pages = ["Home", "Skills", "Projects", "About"];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+const pages = ["Home", "Projects", "Skills", "About", "Contact"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  //   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  //   const handleOpenUserMenu = (event) => {
-  //     setAnchorElUser(event.currentTarget);
-  //   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  //   const handleCloseUserMenu = () => {
-  //     setAnchorElUser(null);
-  //   };
-
   return (
-    <AppBar
-      position="static"
-      sx={{
-        // background: "linear-gradient(to right, #0f0c29, #302b63, #24243e)", // dark gradient
-        // backdropFilter: "blur(10px)",
-        // borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-        background: "transparent",
-      }}
-    >
+    <AppBar position="static" sx={{ background: "#0C0E12" }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+        <Toolbar disableGutters sx={{ position: "relative" }}>
+          {/* ---------- MOBILE MENU ICON (LEFT) ---------- */}
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              display: { xs: "flex", md: "none" },
+              position: "absolute",
+              left: 0,
             }}
           >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="open menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -76,6 +47,8 @@ function Navbar() {
             >
               <MenuIcon />
             </IconButton>
+
+            {/* Mobile Dropdown Menu */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -83,46 +56,67 @@ function Navbar() {
                 vertical: "bottom",
                 horizontal: "left",
               }}
-              keepMounted
               transformOrigin={{
                 vertical: "top",
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
+              sx={{
+                display: { xs: "block", md: "none" },
+                fontFamily: "Orbitron, sans-serif",
+              }}
+              PaperProps={{
+                sx: {
+                  backgroundColor: "#0C0E12",
+                  color: "#3F9BAF",
+                  fontFamily: "Orbitron, sans-serif",
+                },
+              }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+                  <Typography
+                    textAlign="center"
+                    sx={{ fontFamily: "Orbitron, sans-serif" }}
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+
+          {/* ---------- LOGO (CENTER ON MOBILE / LEFT ON DESKTOP) ---------- */}
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              mx: { xs: "auto", md: 0 },
+              position: { xs: "absolute", md: "static" },
+              left: { xs: "50%", md: "auto" },
+              transform: { xs: "translateX(-50%)", md: "none" },
             }}
           >
-            LOGO
-          </Typography>
+            <Avatar
+              alt="Logo"
+              src="/mylogo1.png"
+              variant="square"
+              sx={{
+                width: 100,
+                height: 60,
+                bgcolor: "transparent",
+                borderRadius: 0,
+                boxShadow: "none",
+              }}
+            />
+          </Box>
+
+          {/* ---------- DESKTOP MENU (RIGHT SIDE) ---------- */}
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
-              justifyContent: "end",
+              justifyContent: "flex-end",
+              ml: 2,
             }}
           >
             {pages.map((page) => (
@@ -131,34 +125,20 @@ function Navbar() {
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
-                  mx: 1,
-                  fontWeight: "bold",
-                  background: "linear-gradient(to right, #ff00cc, #3333ff)", // neon gradient
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  transition: "0.3s",
-                  "&:hover": {
-                    background: "linear-gradient(to right, #38bdf8, #ff00cc)", // hover gradient
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    textShadow: "0 0 8px #ff00cc",
-                  },
+                  color: "white",
+                  display: "block",
+                  fontFamily: "Orbitron, sans-serif",
+                  ":hover": "#3F9BAF",
                 }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton sx={{ p: 0 }}>
-                <NavButton />
-              </IconButton>
-            </Tooltip>
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
+
 export default Navbar;
