@@ -13,9 +13,9 @@ import MenuItem from "@mui/material/MenuItem";
 
 const pages = [
   { id: 1, name: "Home", path: "home" },
-  { id: 2, name: "Projects", path: "projects" },
-  { id: 3, name: "Skills", path: "skillcard" },
-  { id: 4, name: "About", path: "aboutsection" },
+  { id: 2, name: "About", path: "aboutsection" },
+  { id: 3, name: "Projects", path: "projects" },
+  { id: 4, name: "Skills", path: "skillcard" },
   { id: 5, name: "Contact", path: "contact" },
 ];
 

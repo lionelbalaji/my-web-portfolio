@@ -18,20 +18,22 @@ const Dashboard = () => {
       <div className="w-full flex justify-center my-10">
         <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
+      <div id="aboutsection">
+        <AboutSection />
+      </div>
+
+      <div className="w-full flex justify-center my-10">
+        <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
+      </div>
       <div id="projects">
         <ProjectCards />
       </div>
+
       <div className="w-full flex justify-center my-10">
         <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
       <div id="skillcard">
         <CardsSkill />
-      </div>
-      <div className="w-full flex justify-center my-10">
-        <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
-      </div>
-      <div id="aboutsection">
-        <AboutSection />
       </div>
       <div className="w-full flex justify-center my-10">
         <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>

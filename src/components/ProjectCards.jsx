@@ -9,6 +9,7 @@ const ProjectCards = () => {
       description: "Its a static website which uses React for frontend",
       logo: "/incense.png",
       animate: "slideInBottom",
+      image: "/evenzo.png",
     },
     {
       id: 2,
@@ -16,6 +17,7 @@ const ProjectCards = () => {
       description: "Its a static website which uses React for frontend",
       logo: "/incense.png",
       animate: "slideInRight",
+      image: "/evenzo.png",
     },
     {
       id: 3,
@@ -23,6 +25,7 @@ const ProjectCards = () => {
       description: "Its a static website which uses React for frontend",
       logo: "/balafoodi.png",
       animate: "slideInLeft",
+      image: "/evenzo.png",
     },
   ];
   return (
@@ -62,7 +65,7 @@ const ProjectCards = () => {
               projectname={item.projectname}
               description={item.description}
               animate={item.animate}
-              logo={item.logo}
+              screenshot={item.image}
             />
           </div>
         ))}
