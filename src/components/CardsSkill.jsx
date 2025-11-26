@@ -45,7 +45,9 @@ const CardsSkill = () => {
         lg:grid-cols-3         
         gap-4               
         place-items-center     
-        py-2   "
+        py-2 
+        animate-slideInBottom
+        "
       >
         {icons.map((item) => (
           <SkillCard key={item.id} icon={item.icon} />

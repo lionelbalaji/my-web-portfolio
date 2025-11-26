@@ -6,24 +6,39 @@ import ProjectCards from "../components/ProjectCards";
 import SkillCard from "../utils/SkillCard";
 import CardsSkill from "../components/CardsSkill";
 import Contact from "./Contact";
+import AboutSection from "../components/AboutSection";
 
 const Dashboard = () => {
   return (
     <div className="bg-bg-main">
       <Navbar />
-      <Objective />
+      <div id="home">
+        <Objective />
+      </div>
       <div className="w-full flex justify-center my-10">
         <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
-      <ProjectCards />
+      <div id="projects">
+        <ProjectCards />
+      </div>
       <div className="w-full flex justify-center my-10">
         <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
-      <CardsSkill />
+      <div id="skillcard">
+        <CardsSkill />
+      </div>
       <div className="w-full flex justify-center my-10">
         <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
       </div>
-      <Contact />
+      <div id="aboutsection">
+        <AboutSection />
+      </div>
+      <div className="w-full flex justify-center my-10">
+        <div className="w-4/5 h-[2px] bg-accent-blueDark"></div>
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
     </div>
   );
 };

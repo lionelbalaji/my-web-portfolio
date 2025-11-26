@@ -9,13 +9,19 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-const pages = ["Home", "Projects", "Skills", "About", "Contact"];
+const pages = [
+  { id: 1, name: "Home", path: "home" },
+  { id: 2, name: "Projects", path: "projects" },
+  { id: 3, name: "Skills", path: "skillcard" },
+  { id: 4, name: "About", path: "aboutsection" },
+  { id: 5, name: "Contact", path: "contact" },
+];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [activePage, setActivePage] = React.useState("home");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -25,11 +31,18 @@ function Navbar() {
     setAnchorElNav(null);
   };
 
+  const handleNavigate = (path) => {
+    setActivePage(path);
+    const section = document.getElementById(path);
+    section?.scrollIntoView({ behavior: "smooth" });
+    handleCloseNavMenu();
+  };
+
   return (
     <AppBar position="static" sx={{ background: "#0C0E12" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ position: "relative" }}>
-          {/* ---------- MOBILE MENU ICON (LEFT) ---------- */}
+          {/* MOBILE MENU BUTTON */}
           <Box
             sx={{
               display: { xs: "flex", md: "none" },
@@ -48,10 +61,12 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
 
-            {/* Mobile Dropdown Menu */}
+            {/* MOBILE DROPDOWN MENU */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
               anchorOrigin={{
                 vertical: "bottom",
                 horizontal: "left",
@@ -60,12 +75,7 @@ function Navbar() {
                 vertical: "top",
                 horizontal: "left",
               }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-                fontFamily: "Orbitron, sans-serif",
-              }}
+              sx={{ display: { xs: "block", md: "none" } }}
               PaperProps={{
                 sx: {
                   backgroundColor: "#0C0E12",
@@ -75,19 +85,24 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography
-                    textAlign="center"
-                    sx={{ fontFamily: "Orbitron, sans-serif" }}
-                  >
-                    {page}
-                  </Typography>
+                <MenuItem
+                  key={page.id}
+                  onClick={() => handleNavigate(page.path)}
+                  sx={{
+                    color: activePage === page.path ? "#3F9BAF" : "white",
+                    fontWeight: activePage === page.path ? "bold" : "normal",
+                    textShadow:
+                      activePage === page.path ? "0px 0px 8px #3F9BAF" : "none",
+                    fontFamily: "Orbitron, sans-serif",
+                  }}
+                >
+                  {page.name}
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          {/* ---------- LOGO (CENTER ON MOBILE / LEFT ON DESKTOP) ---------- */}
+          {/* LOGO CENTER IN MOBILE */}
           <Box
             sx={{
               mx: { xs: "auto", md: 0 },
@@ -100,17 +115,11 @@ function Navbar() {
               alt="Logo"
               src="/mylogo1.png"
               variant="square"
-              sx={{
-                width: 100,
-                height: 60,
-                bgcolor: "transparent",
-                borderRadius: 0,
-                boxShadow: "none",
-              }}
+              sx={{ width: 100, height: 60, bgcolor: "transparent" }}
             />
           </Box>
 
-          {/* ---------- DESKTOP MENU (RIGHT SIDE) ---------- */}
+          {/* DESKTOP MENU */}
           <Box
             sx={{
               flexGrow: 1,
@@ -121,17 +130,23 @@ function Navbar() {
           >
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.id}
+                onClick={() => handleNavigate(page.path)}
                 sx={{
                   my: 2,
                   color: "white",
                   display: "block",
                   fontFamily: "Orbitron, sans-serif",
-                  ":hover": "#3F9BAF",
+                  borderBottom:
+                    activePage === page.path
+                      ? "2px solid #3F9BAF"
+                      : "2px solid transparent",
+                  textShadow:
+                    activePage === page.path ? "0px 0px 8px #3F9BAF" : "none",
+                  transition: "0.3s",
                 }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

@@ -8,7 +8,7 @@ const Objective = () => {
       <div className="flex justify-center md:justify-start animate-slideInLeft">
         <Avatar
           alt="Profile Image"
-          src="/myimage3.png"
+          src="/myimage3.webp"
           variant="square"
           sx={{
             height: 280,
@@ -37,11 +37,23 @@ const Objective = () => {
         </p>
 
         <div className="flex gap-4 justify-center md:justify-start mt-4 animate-slideInTop">
-          <button className="border-2 border-accent-blue rounded-lg px-5 py-2  text-text-primary hover:bg-accent-blue/20 transition text-sm hover:text-accent-blueDark font-orbitron">
+          <button
+            onClick={() => {
+              const projectSection = document.getElementById("projects");
+              projectSection?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="border-2 border-accent-blue rounded-lg px-5 py-2  text-text-primary hover:bg-accent-blue/20 transition text-sm hover:text-accent-blueDark font-orbitron"
+          >
             View Projects
           </button>
 
-          <button className="border-2 border-accent-blueDark rounded-lg px-5 py-2 text-text-primary hover:bg-accent-blue/20 transition text-sm hover:text-accent-blueDark font-orbitron">
+          <button
+            onClick={() => {
+              const projectSection = document.getElementById("contact");
+              projectSection?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="border-2 border-accent-blueDark rounded-lg px-5 py-2 text-text-primary hover:bg-accent-blue/20 transition text-sm hover:text-accent-blueDark font-orbitron"
+          >
             Contact Me
           </button>
         </div>
