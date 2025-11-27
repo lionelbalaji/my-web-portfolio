@@ -5,27 +5,33 @@ const ProjectCards = () => {
   const projects = [
     {
       id: 1,
-      projectname: "Incense Stick",
-      description: "Its a static website which uses React for frontend",
-      logo: "/incense.png",
+      projectname: "Asian Freight Solutions",
+      description:
+        "Built a React-based logistics website with fully responsive layouts and clean component architecture. Implemented user-friendly navigation and mobile-optimized UI sections to improve engagement. Ensured fast load times and consistent design across devices for a seamless user experience.",
+      logo: "/afs.webp",
       animate: "slideInBottom",
-      image: "/evenzo.png",
+      image: "/afs.webp",
+      link: "https://static-logistics-project.web.app/",
     },
     {
       id: 2,
       projectname: "Evenzo",
-      description: "Its a static website which uses React for frontend",
+      description:
+        "Developed a fully responsive company website using React, styled with MUI and Tailwind CSS for a modern and consistent UI. Built reusable components to ensure clean structure and easy scalability. Optimized layouts for all devices, delivering fast performance and a smooth user experience.",
       logo: "/incense.png",
       animate: "slideInRight",
-      image: "/evenzo.png",
+      image: "/evenzo.webp",
+      link: "https://evenzo.co.in/",
     },
     {
       id: 3,
       projectname: "Bala Foodi",
-      description: "Its a static website which uses React for frontend",
+      description:
+        "Created a high-fidelity food delivery app prototype showcasing UI/UX design skills, with intuitive navigation and clean visual layout. Designed all screens to simulate a full user flow — from browsing restaurants and menus to checkout — enabling a realistic app experience. Focused on clarity, user-friendly interface, and responsiveness to communicate the core concept effectively.",
       logo: "/balafoodi.png",
       animate: "slideInLeft",
-      image: "/evenzo.png",
+      image: "/balafoodi.webp",
+      link: "https://lionelbalaji.github.io/food-delivery-app-design/",
     },
   ];
   return (
@@ -41,7 +47,8 @@ const ProjectCards = () => {
     font-orbitron
     animate-slideInRight         
     text-center     
-    mb-4 md:mb-6      
+    mb-4 md:mb-6    
+      
   "
       >
         Projects
@@ -66,6 +73,7 @@ const ProjectCards = () => {
               description={item.description}
               animate={item.animate}
               screenshot={item.image}
+              link={item.link}
             />
           </div>
         ))}

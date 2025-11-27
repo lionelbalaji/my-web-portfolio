@@ -11,11 +11,11 @@ import { FirebaseIcon } from "../utils/FireabaseIcon";
 
 const CardsSkill = () => {
   const icons = [
-    { id: 1, icon: faHtml5 },
-    { id: 2, icon: faCss3Alt },
-    { id: 3, icon: faJs },
-    { id: 4, icon: faReact },
-    { id: 5, icon: faNodeJs },
+    { id: 1, icon: faHtml5, name: "HTML" },
+    { id: 2, icon: faCss3Alt, name: "CSS" },
+    { id: 3, icon: faJs, name: "JavaScript" },
+    { id: 4, icon: faReact, name: "React" },
+    { id: 5, icon: faNodeJs, name: "Node.js" },
   ];
 
   return (
@@ -50,7 +50,7 @@ const CardsSkill = () => {
         "
       >
         {icons.map((item) => (
-          <SkillCard key={item.id} icon={item.icon} />
+          <SkillCard key={item.id} icon={item.icon} name={item.name} />
         ))}
       </div>
     </div>

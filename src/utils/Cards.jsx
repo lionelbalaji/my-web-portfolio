@@ -1,12 +1,14 @@
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Cards({
   projectname,
   description,
   animate,
   screenshot,
+  link,
 }) {
   return (
     <Card
@@ -23,6 +25,7 @@ export default function Cards({
         justifyContent: "space-between",
         boxShadow: "0px 0px 15px rgba(0,0,0,0.4)",
         borderRadius: "12px",
+        marginLeft: 2,
       }}
     >
       {/* IMAGE SECTION */}
@@ -45,7 +48,10 @@ export default function Cards({
       </CardContent>
 
       <CardActions sx={{ padding: "0px", marginTop: "10px" }}>
-        <button className="font-orbitron border-2 border-accent-blue rounded-lg px-3 py-1 bg-accent-blue text-text-primary hover:bg-accent-blue/20 transition text-sm hover:text-accent-blueDark">
+        <button
+          onClick={() => window.open(link, "_blank")}
+          className="font-orbitron border-2 border-accent-blue rounded-lg px-3 py-1 bg-accent-blue text-text-primary hover:bg-accent-blue/20 transition text-sm hover:text-accent-blueDark"
+        >
           Live Demo
         </button>
 

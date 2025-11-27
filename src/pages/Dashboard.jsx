@@ -10,7 +10,7 @@ import AboutSection from "../components/AboutSection";
 
 const Dashboard = () => {
   return (
-    <div className="bg-bg-main">
+    <div className="bg-bg-main overflow-x-hidden overflow-y-hidden">
       <Navbar />
       <div id="home">
         <Objective />

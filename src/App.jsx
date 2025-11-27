@@ -8,7 +8,7 @@ const App = () => {
     AOS.init({ duration: 800 });
   }, []);
   return (
-    <div className="">
+    <div className="overflow-x-hidden overflow-y-hidden">
       <Dashboard />
     </div>
   );
