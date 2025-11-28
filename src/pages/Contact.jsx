@@ -72,7 +72,7 @@ const Contact = () => {
           {/* RESUME BUTTON — SEPARATE BLOCK ON MOBILE */}
           <div className="w-full flex justify-center md:justify-start animate-slideInBottom">
             <a
-              href="/resume.pdf"
+              href="/NewResume.pdf"
               download
               className="
                 px-6 py-2 

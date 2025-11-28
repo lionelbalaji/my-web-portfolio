@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Input from "../utils/Input";
+import emailjs from "emailjs-com";
+import Swal from "sweetalert2";
 
 const DynamicForm = () => {
   const [data, setData] = useState({
@@ -8,7 +10,50 @@ const DynamicForm = () => {
     mobilenumber: "",
     message: "",
   });
-  const [alldata, setAlldata] = useState([]);
+
+  const handlechange = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+
+  const handleclick = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_pvxmjf6", // replace
+        "template_4bpktdm", // replace
+        data,
+        "7HllK_FqgMfHTKxi1" // replace
+      )
+      .then(
+        () => {
+          Swal.fire({
+            title: "Message Sent!",
+            text: "Thank you for contacting Me.",
+            icon: "success",
+            confirmButtonColor: "#2b8cff", // accent-blue
+          });
+        },
+        (error) => {
+          console.log("FAILED...", error);
+          Swal.fire({
+            title: "Failed!",
+            text: "Something went wrong. Please try again.",
+            icon: "error",
+            confirmButtonColor: "#d33",
+          });
+        }
+      );
+
+    setData({
+      name: "",
+      email: "",
+      mobilenumber: "",
+      message: "",
+    });
+  };
+
   const fields = [
     { id: 1, name: "name", value: data.name, placeholder: "Your Name" },
     { id: 2, name: "email", value: data.email, placeholder: "Your Email" },
@@ -26,21 +71,6 @@ const DynamicForm = () => {
     },
   ];
 
-  const handlechange = (e) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-  };
-  const handleclick = (e) => {
-    e.preventDefault();
-    setAlldata((prev) => [...prev, data]);
-    console.log("alldata", data);
-    setData({
-      name: "",
-      email: "",
-      mobilenumber: "",
-      message: "",
-    });
-  };
   return (
     <div>
       <form>
@@ -58,24 +88,7 @@ const DynamicForm = () => {
           <button
             type="submit"
             onClick={handleclick}
-            className="
-      border-2 
-      border-accent-blue 
-      bg-accent-blue 
-      text-text-primary 
-      px-5 
-      py-2 
-      rounded-lg 
-      text-sm 
-      sm:text-base
-      font-medium
-      hover:bg-accent-blue/20 
-      hover:text-accent-blueDark 
-      transition-all 
-      duration-300 
-      w-auto
-      sm:w-auto
-    "
+            className="border-2 border-accent-blue bg-accent-blue text-text-primary px-5 py-2 rounded-lg text-sm sm:text-base font-medium hover:bg-accent-blue/20 hover:text-accent-blueDark transition-all duration-300 w-auto sm:w-auto"
           >
             Send Message
           </button>
